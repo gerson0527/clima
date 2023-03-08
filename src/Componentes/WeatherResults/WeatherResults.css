@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@100;400;600&family=Sen:wght@400;700;800&display=swap');
+body {
+  font-family: 'Lato', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Sen', sans-serif;
+}
+.weatherData {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: black;
+}
+.Temperatura {
+    font-size: 65px;
+    position: absolute;
+    left: -144px;
+    top: -70px;
+}
+.Descripción {
+  position: absolute;
+  left: -140px;
+  top: 39px;
+  width: 20px;
+}
+.name {
+    position: absolute;
+    left: -132px;
+    top: 145px;
+    font-size: 30px;
+}
+.buttom-Temp {
+  position: absolute;   
+  top: 240px;
+}
+.buttom-Temp button{
+border-radius: 20px;   
+background: #38A0D8;
+box-shadow: 0px 4.8546px 4.8546px rgba(0, 0, 0, 0.25);
+}
