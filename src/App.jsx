@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import axios from 'axios';
 import WeatherApp from './Componentes/WeatherResults/WeatherResults';
 import './App.css';
@@ -12,6 +12,29 @@ function App() {
   const [theme, setTheme] = useState('light');
 
   const API_KEY = '1c9f4be264c59588a211530c1e4a2be6'; // accede a la clave de API desde una variable de entorno
+
+  useEffect(() => {
+    // obtiene la ubicación del usuario al cargar la página
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude, longitude } = position.coords;
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`,
+        )
+        .then((response) => {
+          setCountry(response.data.sys.country);
+          setCity(response.data.name);
+          setWeatherData(response.data);
+          setError(null); // borra cualquier error anterior
+        })
+        .catch((error) => {
+          console.log(error);
+          setError(
+            'No se pudo obtener el clima para la ubicación especificada. Por favor, inténtalo de nuevo.',
+          ); // establece el estado de error
+        });
+    });
+  }, [API_KEY]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
